@@ -1,0 +1,46 @@
+seed: 42
+monitor: kendall
+metric_mode: max
+early_stopping: True
+patience: 5
+min_delta: 0.0
+save_top_k: 2
+save_weights_only: False
+min_epochs: 1
+max_epochs: 100
+gradient_clip_val: 1.0
+gpus: 1
+precision: 32
+
+batch_size: 64
+accumulate_grad_batches: 4
+loader_workers: 4
+
+optimizer: Adam
+learning_rate: 3.0e-05
+encoder_learning_rate: 1.0e-05
+layerwise_decay: 0.95
+nr_frozen_epochs: 100000
+scheduler: constant
+
+train_path: data_en/polaris/polaris_train.csv
+val_path: data_en/polaris/polaris_val.csv
+test_path: data_en/polaris/polaris_test.csv
+train_img_dir_path: data_en/polaris/images
+val_img_dir_path: data_en/polaris/images
+test_img_dir_path: data_en/polaris/images
+
+model: PolosEstimator
+loss: mse
+encoder_model: BERT
+# pretrained_model: princeton-nlp/sup-simcse-roberta-large
+pretrained_model: princeton-nlp/sup-simcse-roberta-base
+
+layer: mix
+scalar_mix_dropout: 0.1
+pool: cls
+
+dropout: 0.1
+activations: Tanh
+hidden_sizes: "2304,1152"
+final_activation: False

@@ -1,0 +1,6 @@
+[submodule "pacscore"]
+	path = pacscore
+	url = git@github.com:aimagelab/pacscore.git
+[submodule "CLIP"]
+	path = CLIP
+	url = git@github.com:openai/CLIP.git
