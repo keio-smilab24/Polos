@@ -1,4 +1,4 @@
-# 🌟 Polos: Supervised Automatic Evaluation for Image Captioning Based on Multimodality
+# 🌟 Polos: Multimodal Metric Learning from Human Feedback for Image Captioning
 
 - Accepted at CVPR 2024
 - [project page](https://yuiga.dev/polos)
