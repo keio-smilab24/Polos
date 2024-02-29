@@ -21,7 +21,7 @@ We assume the following environment for our experiments:
 ### Clone & Install
 
 ```bash
-git clone XXXXX
+git clone git@github.com:keio-smilab24/Polos.git
 cd Polos
 ```
 
