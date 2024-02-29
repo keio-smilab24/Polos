@@ -14,5 +14,5 @@ else
     yecho 'Launch without pdb ...'
 fi
 
-python_ polos/cli.py train -f configs/xlmr/base/da-estimator-cvpr.yaml && \
+python_ polos/cli.py train -f configs/polos-trainer.yaml && \
 sh validate_cvpr.sh
