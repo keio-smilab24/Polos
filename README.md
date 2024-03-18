@@ -18,7 +18,7 @@ To install the Polos library, run the following command in your terminal:
 pip install polos
 ```
 
-To use the Polos library, follow the steps outlined below. This example demonstrates how to use the library with an image and associated text data for machine learning prediction tasks.
+To use the Polos library, follow the steps outlined below. 
 
 ### Step 1: Importing Required Libraries
 Import the necessary libraries from Polos and other dependencies.
@@ -35,7 +35,7 @@ model = load_checkpoint(model_path)
 ```
 
 ### Step 3: Preparing the Data
-Prepare your data in the specified format. Here, we are using an example image `test.jpg` and associated text data.
+Prepare your data in the specified format. Here, we are using an example image [test.jpg](https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg), and associated text data.
 ```python
 data = [
     {
@@ -46,7 +46,7 @@ data = [
 ]
 ```
 
-### Step 4: Making Predictions
+### Step 4: Making Scores
 Use the model to make predictions on your data.
 ```python
 _, scores = model.predict(data, batch_size=8, cuda=True)
@@ -54,7 +54,7 @@ print(scores)
 ```
 
 ### Note
-- Ensure that the image `test.jpg` is correctly located in your working directory. ([test.jpg](https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg))
+- Ensure that the image `test.jpg` is correctly located in your working directory. 
 - The `cuda=True` argument in the `predict` function indicates the use of CUDA for GPU acceleration. Make sure you have a compatible NVIDIA GPU and CUDA installed.
 
 ```python
