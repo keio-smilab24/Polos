@@ -9,7 +9,7 @@ from polos.models.estimators.estimator_base import Estimator
 from polos.modules.feedforward import FeedForward
 from polos.modules.scalar_mix import ScalarMixWithDropout
 from torchnlp.utils import collate_tensors
-import clip
+import polos.clip as clip
 import torch
 
 from typing import List, Union
