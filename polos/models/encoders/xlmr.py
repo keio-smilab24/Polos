@@ -30,7 +30,7 @@ XLMR_BASE_V0_URL = "https://dl.fbaipublicfiles.com/fairseq/models/xlmr.base.v0.t
 XLMR_BASE_V0_MODEL_NAME = "xlmr.base.v0/model.pt"
 
 if "HOME" in os.environ:
-    saving_directory = os.environ["HOME"] + "/.cache/torch/unbabel_polos/"
+    saving_directory = os.environ["HOME"] + "/.cache/torch/yuigawada/"
 else:
     raise Exception("HOME environment variable is not defined.")
 
