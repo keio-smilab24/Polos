@@ -3,8 +3,9 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2402.18091-b31b1b.svg)](https://arxiv.org/abs/2402.18091)
 
 - Accepted at CVPR 2024
-- [project page](https://yuiga.dev/polos)
-- [arXiv](https://arxiv.org/abs/2402.18091)
+- 🌐 [project page](https://yuiga.dev/polos)
+- 📄 [arXiv](https://arxiv.org/abs/2402.18091)
+- 🤗 [Dataset](https://huggingface.co/datasets/yuwd/Polaris)
 
 *Establishing an automatic evaluation metric that closely aligns with human judgements is essential for the effective development of image captioning models. Data-driven metrics have recently gained prominence in this field, demonstrating a stronger correlation with human judgements than classic metrics such as CIDEr and SPICE. However, these approaches pose challenges; for instance, they lack sufficient capabilities to handle hallucinations and to generalize across various types of images and texts. This limitation is partly attributed to the fact that existing approaches compute scalar similarities merely using embeddings learned from tasks that are not directly related to image captioning evaluation. In this study, we propose Polos, a supervised automatic evaluation metric tailored for image captioning models. To enhance robustness and practicality, we also present Multimodal Metric Learning from Human Feedback (M
 LHF), a novel framework for developing metrics based on human feedback. In line with the principles of M
@@ -79,7 +80,7 @@ print(scores)
 
 ## Instructions (for researchers)
 
-<img height="500" alt="system" src="https://github.com/keio-smilab24/Polos/assets/51681991/30b12191-224a-4293-b424-54a5e1948173">
+<img width=484 src="https://github.com/keio-smilab24/Polos/assets/51681991/30b12191-224a-4293-b424-54a5e1948173">
 
 
 We assume the following environment for our experiments:
@@ -107,6 +108,7 @@ sh install.sh # cuda=11.8
 - Polaris
   - The Polaris dataset can be downloaded at [this link](https://polos-polaris.s3.ap-northeast-1.amazonaws.com/polaris.zip).
   - Unzip and extract the contents into the `data_en` directory.
+  - [new!] Can download the Polaris from [Huggingface](https://huggingface.co/datasets/yuwd/Polaris)🤗
 - Flickr8k
   - We evaluate Flickr8K according to the [PAC-S](https://github.com/aimagelab/pacscore) pre-processing.
   - Download the dataset from [this link](https://drive.google.com/drive/folders/1oQY8zVCmf0ZGUfsJQ_OnqP2_kw1jGIXp) provided by the PAC-S authors.
