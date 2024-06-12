@@ -18,42 +18,14 @@ str2model = {
     "QualityEstimator": QualityEstimator,
 }
 
-MODELS_URL = "https://unbabel-experimental-models.s3.amazonaws.com/comet/share/public-models.yaml"
-
-
 def get_cache_folder():
     if "HOME" in os.environ:
-        cache_directory = os.environ["HOME"] + "/.cache/torch/unbabel_polos/"
+        cache_directory = os.environ["HOME"] + "/.cache/torch/yuigawada/"
         if not os.path.exists(cache_directory):
             os.makedirs(cache_directory)
         return cache_directory
     else:
         raise Exception("HOME environment variable is not defined.")
-
-
-def model2download(
-    saving_directory: str = get_cache_folder(),
-    url: str = MODELS_URL,
-) -> dict:
-    """Download a dictionary with the mapping between models and downloading urls.
-    :param saving_directory: RELATIVE path to the saving folder (must end with /).
-    Return:
-        - dictionary with the mapping between models and downloading urls.
-    """
-    if not os.path.exists(saving_directory):
-        raise FileNotFoundError("The folder to save the model does not exist.")
-
-    if os.path.exists(saving_directory + "available_models.yaml"):
-        os.remove(saving_directory + "available_models.yaml")
-
-    file_path = download_file_maybe_extract(
-        url=url,
-        directory=saving_directory,
-        extension="yaml",
-    )
-    with open(file_path) as fp:
-        return yaml.load(fp.read(), Loader=yaml.FullLoader)
-
 
 def download_model(model: str, saving_directory: str = None) -> ModelBase:
     """Function that loads pretrained models from AWS.
@@ -68,8 +40,11 @@ def download_model(model: str, saving_directory: str = None) -> ModelBase:
 
     if not os.path.exists(saving_directory):
         os.makedirs(saving_directory)
-
-    models = model2download(saving_directory)
+    
+    if os.path.exists(saving_directory + "reprod/reprod.ckpt"):
+        return saving_directory + "reprod/reprod.ckpt"
+    
+    models = {"polos" : "https://polos-polaris.s3.ap-northeast-1.amazonaws.com/reprod.zip"}
 
     if os.path.isdir(saving_directory + model):
         click.secho(f"{model} is already in cache.", fg="yellow")
@@ -89,13 +64,13 @@ def download_model(model: str, saving_directory: str = None) -> ModelBase:
         os.remove(saving_directory + model + ".zip")
 
     click.secho("Download succeeded. Loading model...", fg="yellow")
-    experiment_folder = saving_directory + model
+    experiment_folder = saving_directory + "reprod"
     checkpoints = [
         file for file in os.listdir(experiment_folder) if file.endswith(".ckpt")
     ]
     checkpoint = checkpoints[-1]
     checkpoint_path = experiment_folder + "/" + checkpoint
-    return load_checkpoint(checkpoint_path)
+    return checkpoint_path
 
 
 def load_checkpoint(checkpoint: str) -> ModelBase:
@@ -134,7 +109,7 @@ def load_checkpoint(checkpoint: str) -> ModelBase:
     else:
         raise Exception(
             "[meta_tags.csv|hparams.yaml is missing from the checkpoint folder."
-            " Please clean your cache folder (~/.cache/torch/unbabel_polos/) and try to download the model again."
+            " Please clean your cache folder (~/.cache/torch/yuigawada/) and try to download the model again."
         )
 
     model.eval()
