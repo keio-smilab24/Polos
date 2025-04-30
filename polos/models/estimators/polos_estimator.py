@@ -93,7 +93,7 @@ class PolosEstimator(Estimator):
             torch.nn.Sigmoid()
         ])
 
-        self.clip, self.clip_preprocess = clip.load("ViT-B/32", device="cuda")
+        self.clip, self.clip_preprocess = clip.load("ViT-B/32", device=self.device)
         self.parallel_feature_extraction = parallel_feature_extraction
 
 
